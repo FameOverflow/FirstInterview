@@ -34,8 +34,10 @@ function addSearchHistory(history) {
 
 function getLocalHistory() {
     const historyJson = localStorage.getItem("searchHistory");
+    console.log(historyJson);
     if (historyJson) {
         const historyList = JSON.parse(historyJson);
+        console.log(historyList);
         historyList.forEach((item) => {
             addSearchHistory(item);
         });
@@ -44,15 +46,18 @@ function getLocalHistory() {
 
 function saveLocalHistory() {
     const historyList = document.querySelectorAll(".searchHistory");
+    console.log(historyList);
     const historyArray = [];
     historyList.forEach((item) => {
         historyArray.push(item.textContent.trim());
     });
+    console.log(historyArray);
     const historyJson = JSON.stringify(historyArray);
+    console.log(historyJson);
     localStorage.setItem("searchHistory", historyJson);
 }
 document.addEventListener("DOMContentLoaded", getLocalHistory);
-document.addEventListener("beforeunload", saveLocalHistory);
+
 
 
 
@@ -75,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let searchUrl = searchEngine + encodeURIComponent(searchText);
             window.open(searchUrl, "_blank");
             addSearchHistory(searchText);
+            saveLocalHistory();
         } else {
             alert("请输入搜索内容！");
         }

@@ -113,7 +113,6 @@
     left: 55px;
     padding: 5px;
     max-height: calc(100vh - 265px);
-    display: none;
     opacity: 1;
     z-index: 51;
     overflow: hidden;

@@ -17,7 +17,7 @@
 
 .main-box {
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -25,6 +25,10 @@
     justify-content: center;
     width: 600px;
     height: 400px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 #main-wrapper {
@@ -77,8 +81,8 @@
     position: relative;
 }
 
-#btnSearch :active {
-    background-color: #f0f8ff;
+.searchBtn :hover {
+    background-color: #9abad6;
 }
 
 .timeBox {
@@ -114,7 +118,7 @@
     z-index: 51;
     overflow: hidden;
     overflow-y: auto;
-    position: absolute;
+    position: fixed;
     min-width: 160px;
     background-color: #f0f8ff;
     border-radius: 10px;
@@ -122,6 +126,10 @@
     transform-origin: 0 0;
     transform: scale(1);
     transition: .25s;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
 }
 
 .menuItem {
@@ -193,11 +201,14 @@
     height: 20px;
 }
 
+#clearHistory:hover {
+    color: #191f24;
+}
 
 .header-home {
     height: 56px;
     width: 100%;
-    padding:0 40px;
+    padding: 0 40px;
     top: 0;
     position: fixed;
     background-color: rgb(240, 255, 255, 0.5);
@@ -205,14 +216,15 @@
     border-bottom: 1px solid #e8e8e8;
     box-shadow: 0 1px 2px #23293314, 0 2px 12px #001f470a
 }
-.header-logo{
+
+.header-logo {
     height: 42px;
 }
+
 .header-home ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline-start: 0px;
     height: 100%;
     font-size: 16px;
     font-weight: 500;
@@ -220,13 +232,12 @@
 }
 
 .header-home-list li {
-    color:#f0f8ff;
+    color: #f0f8ff;
     white-space: nowrap;
     height: 30px;
     line-height: 30px;
     text-align: center;
     margin-right: 40px;
-    border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: color .3s;
     -webkit-transition: color .3s;
@@ -235,6 +246,6 @@
     -o-transition: color .3s;
 }
 
-.header-home-list li :hover{
+.header-home-list ul :hover {
     color: #1f2329;
 }

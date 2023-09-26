@@ -1,5 +1,6 @@
 package main
 
+//注释
 import (
 	"bufio"
 	"crypto/aes"

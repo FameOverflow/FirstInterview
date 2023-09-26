@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家园搜索</title>
+    <link rel="stylesheet" href="Search.CSS"/>
+    <script src="Search.JS"></script>
+</head>
+<body>
+    <div class ="body-box">
+        <img src="RW198v3.jpeg" alt="" id="main-wrapper">
+        <div class="header-home">
+            <ul>
+                <img class="header-logo" src="logo.jpg" />
+                <div class="header-home-list">
+                    <ul>
+                        <li>首页</li>
+                        <li>新闻</li>
+                        <li>地图</li>
+                        <li>图片</li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    <div class="main-box">
+        <div class ="timeBox">
+            <div id="timeText">xx<span>:</span>xx</div>
+            <div id="dateText">xx<span>月</span>xx<span>日</span></div>
+        </div>
+        <div class="search-box">
+            <div class="searchBtn" id="btnSearch">
+                <img src="search.svg" alt="">
+            </div>
+            <div class="searchBtn" id="btnTrans" style="width: 50px;">切换</div>
+            <input type="text" placeholder="搜索一下吧" id="search-input" size="30">
+            <div class="searchBtn" id="btnBack">
+                <img src="undo.svg" alt="">
+            </div>
+            <div class="searchBtn" id="btnFire">
+                <img src="fire.svg" alt="">
+            </div>
+        </div>
+        <div class="menu" id="menuSearchEng" style="display: none">
+            <div class="menuItem" id="baidu">百度</div>
+            <div class="menuItem" id="bing">必应</div>
+            <div class="menuItem" id="google">谷歌</div>
+        </div>
+            <div class ="searchDiscover">
+            <p>搜索发现:</p>
+            <div class="historyBox" id="historyBox">
+                <div class="searchHistory">家园工作室</div>
+            </div>
+            <p id="clearHistory">清空所有记录</p>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

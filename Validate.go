@@ -21,6 +21,14 @@ type Validate struct {
 	Exp   time.Time //验证码过期时间
 	LimT  time.Time //发送限制日期
 	Lim   int       //同一天发送次数
+	Validater
+}
+
+type Validater interface {
+	ValidatePhone(phone string) bool
+	GenerateCode() string
+	encrypt(code string, key []byte) string
+	decrypt(encode string, key []byte) string
 }
 
 func NewVal() *Validate {
@@ -100,7 +108,7 @@ func main() {
 		if Val.Phone == "quit" {
 			return
 		}
-		if ValidatePhone(Val.Phone) {
+		if Val.ValidatePhone(Val.Phone) {
 			break
 		} else {
 			fmt.Println("电话号码格式错误！")
@@ -150,9 +158,9 @@ func main() {
 			scanner.Scan()
 			code := scanner.Text()
 			if flag {
-				Val.Code = decrypt(flagVal.Code, key)
+				Val.Code = Val.decrypt(flagVal.Code, key)
 			} else {
-				Val.Code = decrypt(Val.Code, key)
+				Val.Code = Val.decrypt(Val.Code, key)
 			}
 			if code == Val.Code {
 				if time.Now().Before(Val.Exp) {
@@ -173,7 +181,7 @@ func main() {
 					fmt.Println("今日获取验证码已达上限，明天再来吧！")
 					return
 				} else {
-					Val.Code = GenerateCode()
+					Val.Code = Val.GenerateCode()
 					if Date != Val.LimT {
 						Val.Lim = 0
 						Val.LimT = Date
@@ -184,7 +192,7 @@ func main() {
 					fmt.Println(Val.Code)
 					Val.Dup = time.Now().Add(60 * time.Second)
 					Val.Exp = time.Now().Add(300 * time.Second)
-					Val.Code = encrypt(Val.Code, key)
+					Val.Code = Val.encrypt(Val.Code, key)
 					if flag {
 						flagVal.Code = Val.Code
 						flagVal.Dup = Val.Dup

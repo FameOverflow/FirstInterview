@@ -10,7 +10,7 @@ type Complex struct {
 	Imag float64
 }
 
-type Complexer interface {
+type typer interface {
 	Add(c Complex) Complex
 	Sub(c Complex) Complex
 	Mul(c Complex) Complex
@@ -40,5 +40,27 @@ func (c Complex) Mod() float64 {
 }
 
 func (c Complex) ToString() string {
-	return fmt.Sprintf("%f + %fi", c.Real, c.Imag)
+	if c.Imag == 0 {
+		return fmt.Sprintf("%g", c.Real)
+	}
+	if c.Imag > 0 {
+		return fmt.Sprintf("%g+%gi", c.Real, c.Imag)
+	}
+	return fmt.Sprintf("%g%gi", c.Real, c.Imag)
+}
+
+func main() {
+	c1 := Complex{1, 2}
+	fmt.Println("c1: " + c1.ToString())
+	c2 := Complex{3, 4}
+	fmt.Println("c2: " + c2.ToString())
+	c3 := c1.Add(c2)
+	fmt.Println("c1+c2: " + c3.ToString())
+	c3 = c1.Sub(c2)
+	fmt.Println("c1-c2: " + c3.ToString())
+	c3 = c1.Mul(c2)
+	fmt.Println("c1*c2: " + c3.ToString())
+	c3 = c1.Div(c2)
+	fmt.Println("c1/c2: " + c3.ToString())
+	fmt.Println("c1的模: " + fmt.Sprintf("%g", c1.Mod()))
 }

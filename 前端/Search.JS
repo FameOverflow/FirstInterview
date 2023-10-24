@@ -13,6 +13,7 @@ function displayTime() {
     dateText.innerHTML = month + "<span>月</span>" + fday + "<span>日</sapn>";
 }
 window.onload = displayTime;
+window.onunload = saveLocalHistory;
 setInterval(displayTime, 1000);
 
 function addSearchHistory(history) {
@@ -75,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let searchUrl = searchEngine + encodeURIComponent(searchText);
             window.open(searchUrl, "_blank");
             addSearchHistory(searchText);
-            saveLocalHistory();
         } else {
             alert("请输入搜索内容！");
         }
@@ -117,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
         historyList.forEach((item) => {
             item.remove();
         });
-        saveLocalHistory();
     });
     btnBack.addEventListener("click", () => {
         searchInput.value = historyList[historyList.length - 1].textContent.trim();
